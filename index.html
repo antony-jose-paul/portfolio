@@ -29,20 +29,114 @@
             padding: 12px 0;
             border-bottom: 1px solid #e0e0e0;
             transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
         }
 
         .sticky-name {
-            text-align: center;
             font-size: 1.2rem;
             font-weight: 600;
             color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-bar input {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+            width: 180px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-height: 300px;
+            overflow-y: auto;
+            width: 300px;
+            z-index: 1001;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .search-result-preview {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .search-no-results {
+            padding: 16px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 500;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            padding-top: 80px;
+            padding-top: 120px;
         }
 
         .header {
@@ -203,28 +297,13 @@
             color: #333;
         }
 
-        .languages {
+        .languages, .interests {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
         }
 
-        .language-item {
-            background: #f5f5f5;
-            padding: 6px 12px;
-            border-radius: 4px;
-            color: #555;
-            font-size: 0.9rem;
-            border: 1px solid #e0e0e0;
-        }
-
-        .interests {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .interest-item {
+        .language-item, .interest-item {
             background: #f5f5f5;
             padding: 6px 12px;
             border-radius: 4px;
@@ -240,7 +319,7 @@
             
             .container {
                 padding: 15px;
-                padding-top: 70px;
+                padding-top: 100px;
             }
 
             .project {
@@ -250,16 +329,43 @@
             .leadership {
                 padding: 20px;
             }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .search-bar input {
+                width: 120px;
+            }
+
+            .search-results {
+                width: 250px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="sticky-header">
         <div class="sticky-name">Antony Jose Paul</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#languages">Languages</a>
+            <a href="#interests">Interests</a>
+        </div>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search portfolio...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
     </div>
 
     <div class="container">
-        <header class="header">
+        <header class="header" id="about">
             <h1>Antony Jose Paul</h1>
             <p class="subtitle">Web Developer | Blockchain Enthusiast | AI Explorer</p>
             <div class="contact-info">
@@ -267,7 +373,7 @@
             </div>
         </header>
 
-        <section class="section">
+        <section class="section" id="about">
             <h2>About</h2>
             <p class="summary-text">
                 Passionate Computer Science undergraduate with hands-on experience in full-stack web development and decentralized applications. 
@@ -277,7 +383,7 @@
             </p>
         </section>
 
-        <section class="section">
+        <section class="section" id="skills">
             <h2>Skills</h2>
             <div class="skills">
                 <span class="skill-item">Python</span>
@@ -295,7 +401,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="education">
             <h2>Education</h2>
             <div class="education-item">
                 <h3>Bachelor of Technology in Computer Science</h3>
@@ -304,7 +410,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="projects">
             <h2>Projects</h2>
             <div class="project">
                 <h3>Blockchain-Based Voting System</h3>
@@ -336,7 +442,7 @@
             </ul>
         </div>
 
-        <section class="section">
+        <section class="section" id="certifications">
             <h2>Certifications</h2>
             <div class="cert-item">
                 <h3>Artificial Intelligence Beginners Guide</h3>
@@ -348,7 +454,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="languages">
             <h2>Languages</h2>
             <div class="languages">
                 <span class="language-item">English (Fluent)</span>
@@ -358,7 +464,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="interests">
             <h2>Interests</h2>
             <div class="interests">
                 <span class="interest-item">Blockchain Technology</span>
@@ -369,5 +475,182 @@
             </div>
         </section>
     </div>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        // Define searchable content with sections
+        const searchableContent = [
+            {
+                title: 'About',
+                section: 'about',
+                content: 'Passionate Computer Science undergraduate with hands-on experience in full-stack web development and decentralized applications. Skilled in Python, JavaScript, and blockchain technologies including Solidity and Web3.js. Strong problem-solving abilities with certifications in Artificial Intelligence and Prompt Engineering, and a keen interest in building scalable systems and emerging technologies.'
+            },
+            {
+                title: 'Skills - Programming Languages',
+                section: 'skills',
+                content: 'Python JavaScript Java C/C++ Solidity HTML/CSS'
+            },
+            {
+                title: 'Skills - Technologies',
+                section: 'skills',
+                content: 'Web3.js React.js Git MetaMask SQL Linux'
+            },
+            {
+                title: 'Education',
+                section: 'education',
+                content: 'Bachelor of Technology in Computer Science Government Engineering College Wayanad Oct 2022 - May 2026 CGPA: 7.99'
+            },
+            {
+                title: 'Blockchain-Based Voting System',
+                section: 'projects',
+                content: 'Designed and developed a comprehensive decentralized voting platform utilizing Ethereum blockchain technology to ensure transparency, security, and immutability of electoral processes. The system features admin controls for election management, secure voter authentication through MetaMask integration, and smart contracts that enforce voting rules automatically. Implemented a strict one-person-one-vote policy with votes stored on the blockchain to eliminate tampering and maintain verifiability. Solidity React.js Web3.js MetaMask Ethereum Smart Contracts'
+            },
+            {
+                title: 'Leadership Experience',
+                section: 'projects',
+                content: 'Event Organizer, Blockfinity: A Web3Enclave Event 2024. Organized All-Kerala blockchain conference with 200+ attendees. Coordinated with industry experts and academic institutions. Managed event logistics and participant registration.'
+            },
+            {
+                title: 'Certifications',
+                section: 'certifications',
+                content: 'Artificial Intelligence Beginners Guide Simplilearn. Introduction to Prompt Engineering Simplilearn.'
+            },
+            {
+                title: 'Languages',
+                section: 'languages',
+                content: 'English Fluent Malayalam Fluent Hindi Fluent German Beginner'
+            },
+            {
+                title: 'Interests',
+                section: 'interests',
+                content: 'Blockchain Technology Artificial Intelligence Web Development Machine Learning Scalable Systems'
+            }
+        ];
+
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim();
+
+            searchTimeout = setTimeout(() => {
+                if (query.length === 0) {
+                    hideSearchResults();
+                    return;
+                }
+
+                if (query.length < 2) {
+                    return;
+                }
+
+                performSearch(query);
+            }, 300);
+        });
+
+        searchInput.addEventListener('focus', function(e) {
+            if (e.target.value.trim().length >= 2) {
+                performSearch(e.target.value.trim());
+            }
+        });
+
+        // Hide search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                hideSearchResults();
+            }
+        });
+
+        function performSearch(query) {
+            const results = [];
+            const queryLower = query.toLowerCase();
+
+            searchableContent.forEach(item => {
+                const contentLower = item.content.toLowerCase();
+                const titleLower = item.title.toLowerCase();
+
+                if (contentLower.includes(queryLower) || titleLower.includes(queryLower)) {
+                    // Find the position of the match for preview
+                    const matchIndex = contentLower.indexOf(queryLower);
+                    let preview = item.content;
+                    
+                    if (matchIndex !== -1) {
+                        const start = Math.max(0, matchIndex - 50);
+                        const end = Math.min(item.content.length, matchIndex + query.length + 50);
+                        preview = item.content.substring(start, end);
+                        if (start > 0) preview = '...' + preview;
+                        if (end < item.content.length) preview = preview + '...';
+                    } else {
+                        // Match in title, show beginning of content
+                        preview = item.content.substring(0, 100);
+                        if (item.content.length > 100) preview += '...';
+                    }
+
+                    // Highlight the search term
+                    const regex = new RegExp(`(${query})`, 'gi');
+                    preview = preview.replace(regex, '<span class="highlight">$1</span>');
+
+                    results.push({
+                        title: item.title,
+                        section: item.section,
+                        preview: preview
+                    });
+                }
+            });
+
+            displaySearchResults(results, query);
+        }
+
+        function displaySearchResults(results, query) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-no-results">No results found for "' + query + '"</div>';
+            } else {
+                let html = '';
+                results.forEach(result => {
+                    html += `
+                        <div class="search-result-item" onclick="navigateToSection('${result.section}')">
+                            <div class="search-result-title">${result.title}</div>
+                            <div class="search-result-preview">${result.preview}</div>
+                        </div>
+                    `;
+                });
+                searchResults.innerHTML = html;
+            }
+            
+            searchResults.style.display = 'block';
+        }
+
+        function hideSearchResults() {
+            searchResults.style.display = 'none';
+        }
+
+        function navigateToSection(sectionId) {
+            hideSearchResults();
+            searchInput.value = '';
+            
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                
+                // Add a brief highlight effect
+                section.style.transition = 'background-color 0.3s ease';
+                section.style.backgroundColor = '#f0f8ff';
+                setTimeout(() => {
+                    section.style.backgroundColor = '';
+                }, 1000);
+            }
+        }
+
+        // Clear search when escape key is pressed
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                hideSearchResults();
+                this.blur();
+            }
+        });
+    </script>
 </body>
 </html>
